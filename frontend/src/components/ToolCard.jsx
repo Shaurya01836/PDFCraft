@@ -1,14 +1,29 @@
 import { useNavigate } from "react-router-dom";
 import UseTool from "./UseTool";
 
+const availableRoutes = {
+  "Image to PDF": "/image-to-pdf",
+  "PDF to Word": "/pdf-to-word",
+  "PDF to Excel": "/pdf-to-excel",
+  "PDF to PPT": "/pdf-to-ppt",
+  "PDF to Image": "/pdf-to-image",
+  "Merge PDFs": "/merge-pdf",
+  "Split PDFs": "/split-pdf",
+  "Rotate Pages": "/rotate-pages",
+  "Delete Pages": "/delete-pages",
+  "Edit PDF": "/edit-pdf",
+};
+
 function ToolCard({ icon: Icon, title, description, gradient }) {
   const navigate = useNavigate();
+
   const handleClick = () => {
-    
-    if (title === "Image to PDF") {
-      navigate("/image-to-pdf");
+    const route = availableRoutes[title];
+    if (route) {
+      navigate(route);
+    } else {
+      navigate("/under-construction");
     }
-  
   };
 
   return (
